@@ -5,8 +5,6 @@ author: "Dr. Cheng-Han Yu <br> Department of Mathematical and Statistical Scienc
 date: "`r format(Sys.time(), '%B %d %Y')`"
 format: 
   revealjs:
-    smaller: false
-    theme: simple
     slide-number: c/t   
     logo: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg"
 execute:
