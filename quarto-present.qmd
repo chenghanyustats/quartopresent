@@ -1,0 +1,406 @@
+---
+title: "Quarto Presentation"
+subtitle: "MATH/COSC 3570 Introduction to Data Science"
+author: "Dr. Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <br> Marquette University"
+date: "`r format(Sys.time(), '%B %d %Y')`"
+format: 
+  revealjs:
+    smaller: false
+    theme: simple
+    slide-number: c/t   
+    logo: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg"
+execute:
+  echo: fenced
+---
+
+# Header 1 starts with `#`
+
+- Header 1 create a new slide that is usually used as main section title page.
+
+
+
+
+## [Header 2 starts with `##` and create a new slide](https://quarto.org/docs/presentations/revealjs/#creating-slides)
+
+### Header 3 starts with `###`, and it *won't* create a new slide.
+
+#### Header 4 starts with `####`, and it *won't* create a new slide too.
+
+
+## Slide with R Output
+
+```{r}
+#| echo: fenced
+summary(cars)
+```
+
+## Slide with Plot
+
+```{r}
+#| echo: fenced
+plot(cars)
+```
+
+
+##
+
+`##` with no words creates a new slide without a header.
+
+
+## [Incremental Bullets](https://quarto.org/docs/presentations/revealjs/#incremental-lists)
+
+- *Global setting*: adding the incremental option: `incremental: true` under `format`
+
+``` yaml
+---
+title: "Untitled"
+format: 
+  revealjs:
+    incremental: true
+---
+
+```
+
+
+Or turn it off for specific lists using fenced blocks:
+
+    ::: {.nonincremental}
+    
+    - 1st Item
+    - 2nd Item
+    
+    :::
+
+
+## Incremental Bullets
+
+- *Local setting*: Use `. . .` syntax to indicate a break at an arbitrary location. Not limited to just bullet point!
+
+. . .
+
+- Eat eggs
+
+. . .
+
+- Drink coffee
+
+. . .
+
+```{r}
+#| echo: true
+head(cars)
+```
+
+
+## [Smaller Font {.smaller}](https://quarto.org/docs/presentations/revealjs/#content-overflow)
+
+- Set `smaller: true` to use a smaller default font for slide content globally.
+
+``` yaml
+---
+title: "Untitled"
+format: 
+  revealjs:
+    smaller: true
+---
+
+```
+
+. . .
+
+Locally, include the `.smaller` class on the slide title, for example 
+
+`## Smaller Font {.smaller}`
+
+
+## [Background Image](https://quarto.org/docs/presentations/revealjs/#slide-backgrounds) {background-image="images/21-communicate/cloud.png" background-size="cover" background-color="#4f6952"}
+
+- Use attribute `background-image`, `background-size`, `background-position`, etc after the slides header
+
+- For example, ## Background Image {background-image="images/21-communicate/cloud.png" background-size="cover" background-color="#4f6952"}
+
+
+## [Code Highlighting](https://quarto.org/docs/presentations/revealjs/#code-blocks)
+
+```{r}
+#| code-line-numbers: "|5|3"
+x <- 10
+y <- x * 2
+z <- 20
+a <- 32
+```
+
+
+## [Adding a Logo](https://quarto.org/docs/presentations/revealjs/#footer-logo)
+
+``` yaml
+---
+title: "Untitled"
+format: 
+  revealjs:
+    logo: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg"
+---
+
+```
+
+- Size can be changed using customized CSS. Check [this](https://stackoverflow.com/questions/74083521/how-to-increase-size-logo-in-quarto-reveal-js-presentation).
+
+
+
+## [Column Layout](https://quarto.org/docs/presentations/revealjs/#multiple-columns)
+
+    :::: {.columns}
+
+    ::: {.column width="40%"}
+        contents...
+    :::
+
+    ::: {.column width="60%"}
+        contents...
+    :::
+
+    ::::
+    
+
+## Column Layout
+
+::: columns
+::: {.column width="30%"}
+```{r}
+#| eval: false
+str(cars)
+```
+:::
+
+::: {.column width="70%"}
+```{r}
+#| echo: false
+#| eval: true
+str(cars)
+```
+:::
+:::
+
+## Output Location, `column`
+
+```{r}
+#| output-location: column
+
+par(mar = c(4, 4, 1, 0))
+plot(cars$speed, cars$dist,
+     cex.lab = 1.5, 
+     cex.axis = 1.5, 
+     pch = 19, 
+     cex = 2, 
+     col = 4)
+```
+
+
+
+## [Images](https://quarto.org/docs/presentations/revealjs/advanced.html#absolute-position)
+
+        ![](./img/maru1.JPG){fig-align="center"}
+        
+        
+        ![](./img/fatty2.JPG){.absolute top="100" left="550"         width="500"}
+        
+        
+        ![](./img/maru5.JPG){.absolute bottom="50" right="50"         width="500"}
+        
+        
+## Images
+
+![](./img/maru1.JPG){.absolute top="100" left="0" width="300"}
+![](./img/fatty2.JPG){.absolute top="100" left="350" width="250"}
+![](./img/fatty3.JPG){.absolute top="100" left="750" width="250"}
+
+. . .
+
+![](./img/maru5.JPG){.absolute bottom="50" right="50" width="150"}
+
+. . .
+
+![](./img/maru2.JPG){.absolute bottom="10" right="150" width="350"}
+
+. . .
+
+![](./img/fatty1.JPG){.absolute bottom="10" right="550" height="340"}
+
+. . .
+
+![](./img/maru4.JPG){.absolute bottom="10" right="750" height="340"}
+
+
+## [Display Modes](https://quarto.org/docs/presentations/revealjs/presenting.html)
+
+- `f` Fullscreen
+
+- `s` Speaker View
+
+- `o` Slide Overview
+
+- `e` PDF Export Mode
+
+- `?` Keyboard Help
+
+
+## [Themes](https://quarto.org/docs/presentations/revealjs/themes.html)
+
+
+``` yaml
+---
+title: "Untitled"
+format: 
+  revealjs:
+    theme: simple
+---
+
+```
+
+Here are available themes: `beige`, `blood`, `dark`, `default`, `league`, `moon`, `night`, `serif`, `simple`, `sky`, `solarized`
+
+## Resources
+
+- [Getting Started with Quarto](https://rstudio-conf-2022.github.io/get-started-quarto/)
+
+- [Quarto Presentations](https://quarto.org/docs/presentations/)
+
+- [Revealjs Options](https://quarto.org/docs/reference/formats/presentations/revealjs.html)
+
+# Publish Data Science Documents {background-color="#A7D5E8"}
+
+
+## [Quarto Pub](https://quarto.org/docs/publishing/quarto-pub.html)
+
+- [**Quarto Pub**](https://quartopub.com) is a free publishing service for content created with Quarto.
+
+- First create a free [Quarto Pub](https://quartopub.com) account.
+
+```{r}
+#| echo: false
+#| out-width: "86%"
+knitr::include_graphics("./img/quartopubpage.png")
+```
+
+
+##
+
+```{r}
+#| echo: false
+#| out-width: "86%"
+#| fig-align: center
+knitr::include_graphics("./img/quartopubsign.png")
+```
+
+
+## Publishing to Quarto Pub
+
+- Open terminal and type 
+
+`quarto publish quarto-pub file/path/xxx.qmd`
+
+
+<br>
+
+```
+    $ quarto publish quarto-pub
+    ? Authorize (Y/n) › 
+    ❯ In order to publish to Quarto Pub you need to
+      authorize your account. Please be sure you are
+      logged into the correct Quarto Pub account in 
+      your default web browser, then press Enter or 
+      'Y' to authorize.
+```
+
+A token will be generated to grant permission for publishing to your account.
+
+
+##
+
+```{r}
+#| echo: false
+knitr::include_graphics("./img/quartopub1.png")
+```
+
+
+##
+
+- <https://chenghanyu.quarto.pub/quarto-presentation>
+
+```{r}
+#| echo: false
+knitr::include_graphics("./img/quartopub2.png")
+```
+
+
+## Notes on Quarto Pub
+
+- Quarto Pub sites are publicly visible
+
+- can be no larger than 100 MB
+
+- limit of 10 GB of bandwidth per month. 
+
+
+## [Netlify](https://quarto.org/docs/publishing/netlify.html)
+
+- [Netlify](https://www.netlify.com/) is a professional web publishing platform with support for many advanced features including custom domains, authentication, etc.
+
+```{r}
+#| echo: false
+#| out-width: "86%"
+knitr::include_graphics("./img/netlifypage.png")
+```
+
+
+##
+
+```{r}
+#| echo: false
+#| out-width: "86%"
+#| fig-align: center
+knitr::include_graphics("./img/netlifysign.png")
+```
+
+
+## Publising to Netlify
+
+Commend line: 
+
+`quarto publish netlify file/path/xxx.qmd`
+
+
+
+
+## Webpage Hosting Platform
+
+```{r}
+#| echo: false
+#| out-width: "86%"
+knitr::include_graphics("./img/netlify.png")
+```
+
+
+## Authorize Application
+
+
+```{r}
+#| echo: false
+knitr::include_graphics("./img/netlify_auth.png")
+```
+
+
+## Domain Name
+
+- The domain name will by default use a random identifier <https://fabulous-gaufre-97206c.netlify.app>
+
+```{r}
+#| echo: false
+knitr::include_graphics("./img/netlify_page.png")
+```
+
+- **Site settings > Domain management > Options > Edit site name**
+
+
+
+
